@@ -1,0 +1,19 @@
+[worldserver]
+
+########################################
+#	Honorable 
+# PvP, Honor & Title Module
+########################################
+
+#	Should the Module be active?
+# 0 - Disable : 1 - Enable
+Honorable.Enable = 1
+
+
+#	Should the Module be announced in chat?
+# 0 - Disable : 1 - Enable
+Honorable.AnnounceOnLogin = 1
+
+#	Should the PvP Titles be enabled?
+# 0 - Disable : 1 - Enable
+Honorable.PVPTitles = 1
