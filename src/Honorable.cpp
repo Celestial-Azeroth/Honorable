@@ -39,7 +39,7 @@ class HonorableAnnouncer : public PlayerScript
 public:
 	HonorableAnnouncer() : PlayerScript("Honorable_Player") {}
 
-	void OnLogin(Player* player) override
+	void OnPlayerLogin(Player* player) override
 	{
 		if (!modEnabled || !modAnnouncer)
 			return;
@@ -55,19 +55,19 @@ class HonorableKill : public PlayerScript
 public:
 	HonorableKill() : PlayerScript("Honorable_Player") {}
 
-	void OnCreatureKill(Player* player, Creature* creature) override
-	{
-		HonorGuard::HandleKilledGuard(player, creature);
-		HonorTitles::AwardEarnedTitles(player);
-	}
-	
-	void OnCreatureKilledByPet(Player* player, Creature* creature) override
+	void OnPlayerCreatureKill(Player* player, Creature* creature) override
 	{
 		HonorGuard::HandleKilledGuard(player, creature);
 		HonorTitles::AwardEarnedTitles(player);
 	}
 
-	void OnPVPKill(Player* attacker, Player* killed) override
+	void OnPlayerCreatureKilledByPet(Player* player, Creature* creature) override
+	{
+		HonorGuard::HandleKilledGuard(player, creature);
+		HonorTitles::AwardEarnedTitles(player);
+	}
+
+	void OnPlayerPVPKill(Player* attacker, Player* killed) override
 	{
 		if (attacker->GetGUID() == killed->GetGUID())
 			return;
